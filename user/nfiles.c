@@ -95,6 +95,7 @@ nfiles(char *path)
       }
       else if((compare(fmtname(buf),".")==0 || compare(fmtname(buf),"..")==0) && st.type==1)
       {
+        //Read the content inside directories through recursion
         nfiles(buf);
       }
 
@@ -111,10 +112,12 @@ nfiles(char *path)
 int
 main(int argc, char *argv[])
 {
-  
+  if(argc>1)
+  {
+    printf("No arguments should be passed\n);
+    exit(0);
+  }
   nfiles(".");
   printf("Total number of files in hard disk are : %d\n",count);
   exit(0);
-  
-
 }
